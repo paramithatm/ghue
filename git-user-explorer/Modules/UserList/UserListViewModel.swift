@@ -6,6 +6,7 @@
 //
 
 import Combine
+import Moya
 import SwiftUI
 
 enum ViewState {
@@ -16,6 +17,29 @@ enum ViewState {
 }
 
 class UserListViewModel: ObservableObject {
+    
     @Published var viewState: ViewState = .initialState
+    
+    private let provider: MoyaProvider<GitNetworkTarget>
+    
+    init(viewState: ViewState = .initialState, provider: MoyaProvider<GitNetworkTarget> = MoyaProvider<GitNetworkTarget>()) {
+        self.viewState = viewState
+        self.provider = provider
+    }
+    
+    func fetchUserList() {
+        viewState = .loading
+        
+        provider.request(.getUserList) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case let .success(response):
+                self.viewState = try! .showResult(response.mapString())
+            case let .failure(error):
+                self.viewState = .error(error)
+            }
+        }
+        
+    }
     
 }
