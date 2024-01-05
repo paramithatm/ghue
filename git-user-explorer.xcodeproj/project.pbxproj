@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		124648C57EFB8922FE3B897E /* Pods_git_user_explorer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A8EBEC61FD5DBECF16F1ADD /* Pods_git_user_explorer.framework */; };
+		C20301152B48110500116B6E /* UserBasicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20301142B48110500116B6E /* UserBasicModel.swift */; };
+		C20301192B48184000116B6E /* UserDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20301182B48184000116B6E /* UserDetailsModel.swift */; };
+		C203011D2B48200900116B6E /* RepoBasicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C203011C2B48200900116B6E /* RepoBasicModel.swift */; };
 		C24734C32B46BE6500D8F6D9 /* git_user_explorerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24734C22B46BE6500D8F6D9 /* git_user_explorerApp.swift */; };
 		C24734C52B46BE6500D8F6D9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24734C42B46BE6500D8F6D9 /* ContentView.swift */; };
 		C24734C72B46BE6700D8F6D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C24734C62B46BE6700D8F6D9 /* Assets.xcassets */; };
@@ -26,6 +29,9 @@
 		362C6F9AA78B4E21E3BBD2E6 /* Pods-git-user-explorer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-git-user-explorer.debug.xcconfig"; path = "Target Support Files/Pods-git-user-explorer/Pods-git-user-explorer.debug.xcconfig"; sourceTree = "<group>"; };
 		520BF47CCFD5DA7D0E77D626 /* Pods-git-user-explorer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-git-user-explorer.release.xcconfig"; path = "Target Support Files/Pods-git-user-explorer/Pods-git-user-explorer.release.xcconfig"; sourceTree = "<group>"; };
 		8A8EBEC61FD5DBECF16F1ADD /* Pods_git_user_explorer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_git_user_explorer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C20301142B48110500116B6E /* UserBasicModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBasicModel.swift; sourceTree = "<group>"; };
+		C20301182B48184000116B6E /* UserDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsModel.swift; sourceTree = "<group>"; };
+		C203011C2B48200900116B6E /* RepoBasicModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoBasicModel.swift; sourceTree = "<group>"; };
 		C24734BF2B46BE6500D8F6D9 /* git-user-explorer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "git-user-explorer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C24734C22B46BE6500D8F6D9 /* git_user_explorerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = git_user_explorerApp.swift; sourceTree = "<group>"; };
 		C24734C42B46BE6500D8F6D9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -60,6 +66,56 @@
 				520BF47CCFD5DA7D0E77D626 /* Pods-git-user-explorer.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		C20301122B4810E800116B6E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C20301142B48110500116B6E /* UserBasicModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C20301132B4810EE00116B6E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C2E33DC42B46DE8B006EC323 /* UserListView.swift */,
+				C2E33DC82B47C281006EC323 /* UserCellView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C20301162B48182A00116B6E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C2E33DC22B46D8C1006EC323 /* UserDetailsView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C20301172B48182D00116B6E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C20301182B48184000116B6E /* UserDetailsModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C203011A2B481FF500116B6E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C2E33DCB2B47ED99006EC323 /* RepositoryListView.swift */,
+				C2E33DCD2B47EDA3006EC323 /* RepositoryCellView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C203011B2B481FF800116B6E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C203011C2B48200900116B6E /* RepoBasicModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		C24734B62B46BE6500D8F6D9 = {
@@ -139,9 +195,9 @@
 		C2E33DBF2B46D88B006EC323 /* UserList */ = {
 			isa = PBXGroup;
 			children = (
-				C2E33DC42B46DE8B006EC323 /* UserListView.swift */,
+				C20301132B4810EE00116B6E /* View */,
+				C20301122B4810E800116B6E /* Model */,
 				C2E33DC62B46EC1C006EC323 /* UserListViewModel.swift */,
-				C2E33DC82B47C281006EC323 /* UserCellView.swift */,
 			);
 			path = UserList;
 			sourceTree = "<group>";
@@ -149,7 +205,8 @@
 		C2E33DC12B46D8B4006EC323 /* UserDetails */ = {
 			isa = PBXGroup;
 			children = (
-				C2E33DC22B46D8C1006EC323 /* UserDetailsView.swift */,
+				C20301172B48182D00116B6E /* Model */,
+				C20301162B48182A00116B6E /* View */,
 			);
 			path = UserDetails;
 			sourceTree = "<group>";
@@ -157,8 +214,8 @@
 		C2E33DCA2B47ED18006EC323 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
-				C2E33DCB2B47ED99006EC323 /* RepositoryListView.swift */,
-				C2E33DCD2B47EDA3006EC323 /* RepositoryCellView.swift */,
+				C203011B2B481FF800116B6E /* Model */,
+				C203011A2B481FF500116B6E /* View */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -288,6 +345,9 @@
 				C2E33DC32B46D8C1006EC323 /* UserDetailsView.swift in Sources */,
 				C2E33DC72B46EC1C006EC323 /* UserListViewModel.swift in Sources */,
 				C2E33DCC2B47ED99006EC323 /* RepositoryListView.swift in Sources */,
+				C20301192B48184000116B6E /* UserDetailsModel.swift in Sources */,
+				C203011D2B48200900116B6E /* RepoBasicModel.swift in Sources */,
+				C20301152B48110500116B6E /* UserBasicModel.swift in Sources */,
 				C2E33DC52B46DE8B006EC323 /* UserListView.swift in Sources */,
 				C2E33DC92B47C281006EC323 /* UserCellView.swift in Sources */,
 				C24734C52B46BE6500D8F6D9 /* ContentView.swift in Sources */,
