@@ -7,7 +7,7 @@
 
 import Foundation
 
-internal struct UserDetailsModel {
+internal struct UserDetailsModel: Decodable {
     internal var username: String
     internal var fullName: String
     internal var avatarUrl: URL?

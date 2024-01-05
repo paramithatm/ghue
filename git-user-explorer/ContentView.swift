@@ -13,8 +13,6 @@ struct ContentView: View {
         VStack {
             UserListView()
         }
-        .onAppear()
-        .padding()
     }
 }
 

@@ -7,7 +7,7 @@
 
 import Foundation
 
-internal struct RepoBasicModel {
+internal struct RepoBasicModel: Decodable {
     internal var shortName: String
     internal var fullname: String
     internal var description: String

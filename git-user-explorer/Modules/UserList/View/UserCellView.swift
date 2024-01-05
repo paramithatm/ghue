@@ -11,21 +11,28 @@ import SwiftUI
 struct UserCellView: View {
     
     var name: String
+    var avatarUrl: String
     
     var body: some View {
         VStack(alignment: .leading) {
             HStack(spacing: 8) {
-                Image(systemName: "globe")
-                    .imageScale(.large)
-                    .foregroundStyle(.tint)
+                AsyncImage(url: URL(string: avatarUrl)) { image in
+                    image
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 50)
+                        .cornerRadius(25)
+                } placeholder: {
+                    ProgressView()
+                        .frame(width: 50, height: 50)
+                }
+
+                    
                 Text(name)
                     .foregroundStyle(Color.paleBlue2)
                 Spacer(minLength: 16)
                 HStack {
                     Image(systemName: "plus")
-                        .imageScale(.large)
-                        .foregroundStyle(.tint)
-                    Image(systemName: "heart")
                         .imageScale(.large)
                         .foregroundStyle(.tint)
                 }
@@ -35,5 +42,5 @@ struct UserCellView: View {
 }
 
 #Preview {
-    UserCellView(name: "Woohoo")
+    UserCellView(name: "Woohoo", avatarUrl: "")
 }

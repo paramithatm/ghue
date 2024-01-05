@@ -12,7 +12,7 @@ import SwiftUI
 enum ViewState {
     case initialState
     case loading
-    case showResult(String)
+    case showResult([UserBasicModel])
     case error(Error)
 }
 
@@ -34,7 +34,10 @@ class UserListViewModel: ObservableObject {
             guard let self = self else { return }
             switch result {
             case let .success(response):
-                self.viewState = try! .showResult(response.mapString())
+                
+                let users = try! response.map([UserBasicModel].self)
+                
+                self.viewState = .showResult(users)
             case let .failure(error):
                 self.viewState = .error(error)
             }

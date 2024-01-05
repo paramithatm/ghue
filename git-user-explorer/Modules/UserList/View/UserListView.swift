@@ -16,17 +16,12 @@ struct UserListView: View {
         Group {
             switch viewModel.viewState {
             case .initialState:
-                Text("Baru pertama")
+                Text("wkwk")
             case .loading:
                 ProgressView()
-            case .showResult(let string):
-                List {
-                    UserCellView(name: string)
-                    UserCellView(name: "Mitha")
-                    UserCellView(name: "Mitha")
-                    UserCellView(name: "Mitha")
-                    UserCellView(name: "Mitha")
-                    UserCellView(name: "Mitha")
+            case let .showResult(response):
+                List(response) { user in
+                    UserCellView(name: user.username, avatarUrl: user.avatarUrl ?? "")
                 }
             case .error(let error):
                 Text(error.localizedDescription)
