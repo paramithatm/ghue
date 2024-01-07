@@ -20,8 +20,15 @@ struct UserListView: View {
             case .loading:
                 ProgressView()
             case let .showResult(response):
-                List(response) { user in
-                    UserCellView(name: user.username, avatarUrl: user.avatarUrl ?? "")
+                NavigationView {
+                    List(response) { user in
+                        NavigationLink(destination: UserDetailsView()) {
+                            UserCellView(
+                                name: user.username,
+                                avatarUrl: user.avatarUrl ?? ""
+                            )
+                        }
+                    }
                 }
             case .error(let error):
                 Text(error.localizedDescription)
@@ -32,6 +39,6 @@ struct UserListView: View {
     }
 }
 
-#Preview {
-    UserListView()
-}
+//#Preview {
+//    UserListView()
+//}
