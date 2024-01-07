@@ -74,57 +74,6 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		C20301122B4810E800116B6E /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				C20301142B48110500116B6E /* UserBasicModel.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		C20301132B4810EE00116B6E /* View */ = {
-			isa = PBXGroup;
-			children = (
-				C2E33DC42B46DE8B006EC323 /* UserListView.swift */,
-				C2E33DC82B47C281006EC323 /* UserCellView.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		C20301162B48182A00116B6E /* View */ = {
-			isa = PBXGroup;
-			children = (
-				C2E33DC22B46D8C1006EC323 /* UserDetailsView.swift */,
-				C24B0C202B4A89CC00AE9FA1 /* UserDetailsCardView.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		C20301172B48182D00116B6E /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				C20301182B48184000116B6E /* UserDetailsModel.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		C203011A2B481FF500116B6E /* View */ = {
-			isa = PBXGroup;
-			children = (
-				C2E33DCB2B47ED99006EC323 /* RepositoryListView.swift */,
-				C2E33DCD2B47EDA3006EC323 /* RepositoryCellView.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		C203011B2B481FF800116B6E /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				C203011C2B48200900116B6E /* RepoBasicModel.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		C24734B62B46BE6500D8F6D9 = {
 			isa = PBXGroup;
 			children = (
@@ -146,9 +95,9 @@
 		C24734C12B46BE6500D8F6D9 /* git-user-explorer */ = {
 			isa = PBXGroup;
 			children = (
+				C24B0C232B4A8BEB00AE9FA1 /* Model */,
+				C24B0C222B4A8BE600AE9FA1 /* View */,
 				C25E6FB92B48022B0070C832 /* SharedUtilities */,
-				C2E33DBE2B46D880006EC323 /* Modules */,
-				C2E33DBB2B46D5D1006EC323 /* DesignSystem */,
 				C24734C22B46BE6500D8F6D9 /* git_user_explorerApp.swift */,
 				C24734C42B46BE6500D8F6D9 /* ContentView.swift */,
 				C24734C62B46BE6700D8F6D9 /* Assets.xcassets */,
@@ -165,9 +114,51 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		C24B0C222B4A8BE600AE9FA1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C24B0C252B4A8C2900AE9FA1 /* Repo */,
+				C24B0C242B4A8C1500AE9FA1 /* User */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C24B0C232B4A8BEB00AE9FA1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C20301182B48184000116B6E /* UserDetailsModel.swift */,
+				C20301142B48110500116B6E /* UserBasicModel.swift */,
+				C203011C2B48200900116B6E /* RepoBasicModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C24B0C242B4A8C1500AE9FA1 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				C2E33DC22B46D8C1006EC323 /* UserDetailsView.swift */,
+				C24B0C202B4A89CC00AE9FA1 /* UserDetailsCardView.swift */,
+				C24B0C1C2B4A7BC600AE9FA1 /* UserDetailsViewModel.swift */,
+				C2E33DC42B46DE8B006EC323 /* UserListView.swift */,
+				C2E33DC82B47C281006EC323 /* UserCellView.swift */,
+				C2E33DC62B46EC1C006EC323 /* UserListViewModel.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		C24B0C252B4A8C2900AE9FA1 /* Repo */ = {
+			isa = PBXGroup;
+			children = (
+				C2E33DCB2B47ED99006EC323 /* RepositoryListView.swift */,
+				C2E33DCD2B47EDA3006EC323 /* RepositoryCellView.swift */,
+			);
+			path = Repo;
+			sourceTree = "<group>";
+		};
 		C25E6FB92B48022B0070C832 /* SharedUtilities */ = {
 			isa = PBXGroup;
 			children = (
+				C2E33DBB2B46D5D1006EC323 /* DesignSystem */,
 				C25E6FBA2B4802320070C832 /* Networking */,
 				C24B0C1E2B4A863200AE9FA1 /* WebView.swift */,
 			);
@@ -188,45 +179,6 @@
 				C2E33DBC2B46D5F2006EC323 /* Colors.swift */,
 			);
 			path = DesignSystem;
-			sourceTree = "<group>";
-		};
-		C2E33DBE2B46D880006EC323 /* Modules */ = {
-			isa = PBXGroup;
-			children = (
-				C2E33DCA2B47ED18006EC323 /* Repository */,
-				C2E33DC12B46D8B4006EC323 /* UserDetails */,
-				C2E33DBF2B46D88B006EC323 /* UserList */,
-			);
-			path = Modules;
-			sourceTree = "<group>";
-		};
-		C2E33DBF2B46D88B006EC323 /* UserList */ = {
-			isa = PBXGroup;
-			children = (
-				C20301132B4810EE00116B6E /* View */,
-				C20301122B4810E800116B6E /* Model */,
-				C2E33DC62B46EC1C006EC323 /* UserListViewModel.swift */,
-			);
-			path = UserList;
-			sourceTree = "<group>";
-		};
-		C2E33DC12B46D8B4006EC323 /* UserDetails */ = {
-			isa = PBXGroup;
-			children = (
-				C20301172B48182D00116B6E /* Model */,
-				C20301162B48182A00116B6E /* View */,
-				C24B0C1C2B4A7BC600AE9FA1 /* UserDetailsViewModel.swift */,
-			);
-			path = UserDetails;
-			sourceTree = "<group>";
-		};
-		C2E33DCA2B47ED18006EC323 /* Repository */ = {
-			isa = PBXGroup;
-			children = (
-				C203011B2B481FF800116B6E /* Model */,
-				C203011A2B481FF500116B6E /* View */,
-			);
-			path = Repository;
 			sourceTree = "<group>";
 		};
 		FA67CE5F195F9EF15C8D6826 /* Frameworks */ = {
