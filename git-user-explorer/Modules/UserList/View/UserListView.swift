@@ -22,7 +22,7 @@ struct UserListView: View {
             case let .showResult(response):
                 NavigationView {
                     List(response) { user in
-                        NavigationLink(destination: UserDetailsView()) {
+                        NavigationLink(destination: UserDetailsView(id: user.username)) {
                             UserCellView(
                                 name: user.username,
                                 avatarUrl: user.avatarUrl ?? ""

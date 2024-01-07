@@ -9,7 +9,7 @@ import Combine
 import Moya
 import SwiftUI
 
-enum ViewState {
+enum UserListViewState {
     case initialState
     case loading
     case showResult([UserBasicModel])
@@ -18,11 +18,11 @@ enum ViewState {
 
 class UserListViewModel: ObservableObject {
     
-    @Published var viewState: ViewState = .initialState
+    @Published var viewState: UserListViewState = .initialState
     
     private let provider: MoyaProvider<GitNetworkTarget>
     
-    init(viewState: ViewState = .initialState, provider: MoyaProvider<GitNetworkTarget> = MoyaProvider<GitNetworkTarget>()) {
+    init(viewState: UserListViewState = .initialState, provider: MoyaProvider<GitNetworkTarget> = MoyaProvider<GitNetworkTarget>()) {
         self.viewState = viewState
         self.provider = provider
     }

@@ -41,6 +41,6 @@ struct UserCellView: View {
     }
 }
 
-#Preview {
-    UserCellView(name: "Woohoo", avatarUrl: "")
-}
+//#Preview {
+//    UserCellView(name: "Woohoo", avatarUrl: "")
+//}

@@ -7,10 +7,24 @@
 
 import Foundation
 
-internal struct UserDetailsModel: Decodable {
+internal struct UserDetailsModel: Identifiable {
+    internal var id: String { username }
     internal var username: String
     internal var fullName: String
-    internal var avatarUrl: URL?
+    internal var avatarUrl: String
     internal var followingCount: Int
     internal var followersCount: Int
+    internal var publicRepoCount: Int
+}
+
+extension UserDetailsModel: Decodable, Equatable {
+    enum CodingKeys: String, CodingKey {
+        case username = "login"
+        case fullName = "name"
+        case avatarUrl = "avatar_url"
+        case followingCount = "following"
+        case followersCount = "followers"
+        case publicRepoCount = "public_repos"
+    }
+    
 }

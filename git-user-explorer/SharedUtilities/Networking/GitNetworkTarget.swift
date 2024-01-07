@@ -9,6 +9,7 @@ import Moya
 
 enum GitNetworkTarget {
     case getUserList
+    case getUserDetails(id: String)
 }
 
 extension GitNetworkTarget: TargetType {
@@ -23,12 +24,14 @@ extension GitNetworkTarget: TargetType {
         switch self {
         case .getUserList:
             return "/users"
+        case let .getUserDetails(id):
+            return "/users/\(id)"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .getUserList:
+        case .getUserList, .getUserDetails:
             return .get
         }
     }
