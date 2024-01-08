@@ -60,9 +60,12 @@ extension GitNetworkTarget: TargetType {
     }
     
     var headers: [String : String]? {
-        return [
-            "Accept": "application/vnd.github+json"
-        ]
+        var defaultHeader: [String: String] = ["Accept": "application/vnd.github+json"]
+        if let token = value(forKey: "ghToken") {
+            defaultHeader["Authorization"] = "Bearer \(token)"
+        }
+
+        return defaultHeader
     }
     
     
