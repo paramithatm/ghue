@@ -30,7 +30,7 @@ class UserListViewModel: ObservableObject {
     func fetchUserList() {
         viewState = .loading
         
-        provider.request(.getUserList) { [weak self] result in
+        provider.request(.getUserList(current: 0, pagination: 1)) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case let .success(response):

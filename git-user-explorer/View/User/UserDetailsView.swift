@@ -31,7 +31,6 @@ struct UserDetailsView: View {
                     RepositoryListView(id: user.id)
                     Spacer()
                 }
-                
             }
         }.onAppear {
             viewModel.fetchUserDetails()

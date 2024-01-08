@@ -26,11 +26,9 @@ struct RepositoryListView: View {
             case let .error(error):
                 Text(error.localizedDescription)
             case let .showResult(repos):
-                NavigationView {
-                    List(repos) { repo in
-                        NavigationLink(destination: WebView(urlString: repo.repoUrl).toolbar(.hidden)) {
-                            RepositoryCellView(repo: repo)
-                        }
+                List(repos) { repo in
+                    NavigationLink(destination: WebView(urlString: repo.repoUrl)) {
+                        RepositoryCellView(repo: repo)
                     }
                 }
             }
