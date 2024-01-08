@@ -11,8 +11,10 @@ import SwiftUI
 struct UserDetailsView: View {
     
     @StateObject var viewModel: UserDetailsViewModel
+    var id: String
     
     init(id: String) {
+        self.id = id
         _viewModel = StateObject(wrappedValue: UserDetailsViewModel(id: id))
     }
     
@@ -32,7 +34,10 @@ struct UserDetailsView: View {
                     Spacer()
                 }
             }
-        }.onAppear {
+        }
+        .navigationTitle(id)
+        .navigationBarTitleDisplayMode(.inline)
+        .onAppear {
             viewModel.fetchUserDetails()
         }
     }

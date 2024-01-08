@@ -20,7 +20,7 @@ internal struct RepoBasicModel: Identifiable {
 
 extension RepoBasicModel: Decodable, Equatable {
     enum CodingKeys: String, CodingKey {
-        case fullName = "full_name"
+        case fullName = "name"
         case description
         case language = "language"
         case starsCount = "stargazers_count"

@@ -29,6 +29,7 @@ struct UserCellView: View {
                 }
 
                 Text(name)
+                    .title()
                 Spacer(minLength: 16)
             }
         }

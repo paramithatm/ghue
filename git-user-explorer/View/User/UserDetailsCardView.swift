@@ -28,10 +28,11 @@ struct UserDetailsCardView: View {
                         .frame(width: 80, height: 80)
                 }
                 
-                
                 VStack(alignment: .leading) {
                     Text(user.fullName)
+                        .title()
                     Text(user.username)
+                        .subtitle()
                 }
             }
             
@@ -39,20 +40,30 @@ struct UserDetailsCardView: View {
             HStack {
                 VStack {
                     Text("\(user.publicRepoCount)")
+                        .title()
                     Text("Repositories")
+                        .subtitle()
                 }
-                
+                Spacer()
                 VStack {
                     Text("\(user.followingCount)")
+                        .title()
                     Text("Following")
+                        .subtitle()
                 }
-                
+                Spacer()
                 VStack {
                     Text("\(user.followersCount)")
+                        .title()
                     Text("Followers")
+                        .subtitle()
                 }
             }
-        }
+        }.padding(16)
     }
     
+}
+
+#Preview {
+    UserDetailsCardView(user: UserDetailsModel(username: "paramithatm", fullName: "Paramitha", avatarUrl: "https://avatars.githubusercontent.com/u/24902812?s=100", followingCount: 100, followersCount: 20, publicRepoCount: 69))
 }

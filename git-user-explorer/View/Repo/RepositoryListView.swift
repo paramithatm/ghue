@@ -32,7 +32,8 @@ struct RepositoryListView: View {
                     }
                 }
             }
-        }.onAppear {
+        }
+        .onAppear {
             viewModel.fetchRepositoryList()
         }
     }

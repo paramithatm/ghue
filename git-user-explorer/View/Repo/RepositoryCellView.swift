@@ -15,33 +15,36 @@ struct RepositoryCellView: View {
         VStack(alignment: .leading) {
             HStack {
                 Image(systemName: "bookmark")
-                    .imageScale(.large)
-                    .foregroundStyle(.tint)
+                    .icon(.medium)
                 Text(repo.fullName)
+                    .thinTitle()
             }
             if let description = repo.description {
                 Text(description)
+                    .thinSubtitle()
             }
             HStack {
-                HStack {
-                    Image(systemName: "book")
-                        .imageScale(.large)
-                        .foregroundStyle(.tint)
-                    Text(repo.language ?? "Unknown language")
+                if let language = repo.language {
+                    HStack {
+                        Image(systemName: "book")
+                            .icon(.small)
+                        Text(language)
+                            .small()
+                    }
                 }
                 
                 HStack {
                     Image(systemName: "star")
-                        .imageScale(.large)
-                        .foregroundStyle(.tint)
+                        .icon(.small)
                     Text("\(repo.starsCount)")
+                        .small()
                 }
             }
         }
     }
 }
 
-//#Preview {
-//    RepositoryCellView()
-//}
-//
+#Preview {
+    RepositoryListView(id: "mojombo")
+}
+

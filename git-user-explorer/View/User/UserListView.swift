@@ -22,13 +22,14 @@ struct UserListView: View {
             case let .showResult(response):
                 NavigationView {
                     List(response) { user in
-                        NavigationLink(destination: UserDetailsView(id: user.username)) {
-                            UserCellView(
-                                name: user.username,
-                                avatarUrl: user.avatarUrl ?? ""
-                            )
-                        }
-                    }
+                        NavigationLink(
+                            destination: UserDetailsView(id: user.username)) {
+                                    UserCellView(
+                                        name: user.username,
+                                        avatarUrl: user.avatarUrl ?? ""
+                                    )
+                                }
+                    }.navigationTitle("GitHub User Explorer")
                 }
             case .error(let error):
                 Text(error.localizedDescription)
