@@ -11,6 +11,7 @@ enum GitNetworkTarget {
     case getUserList(current: Int, pagination: Int)
     case getUserDetails(id: String)
     case getRepoList(id: String)
+    case searchUsers(keyword: String)
 }
 
 extension GitNetworkTarget: TargetType {
@@ -29,12 +30,14 @@ extension GitNetworkTarget: TargetType {
             return "/users/\(id)"
         case let .getRepoList(id):
             return "/users/\(id)/repos"
+        case .searchUsers:
+            return "/search/users"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .getUserList, .getUserDetails, .getRepoList:
+        case .getUserList, .getUserDetails, .getRepoList, .searchUsers:
             return .get
         }
     }
@@ -48,6 +51,8 @@ extension GitNetworkTarget: TargetType {
                     "page": pagination,
                     "since": current
             ]
+        case let .searchUsers(keyword):
+            ["q": keyword]
         case .getUserDetails:
             [:]
         case .getRepoList:
