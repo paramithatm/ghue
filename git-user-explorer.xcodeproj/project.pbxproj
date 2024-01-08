@@ -18,6 +18,7 @@
 		C24B0C1D2B4A7BC600AE9FA1 /* UserDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24B0C1C2B4A7BC600AE9FA1 /* UserDetailsViewModel.swift */; };
 		C24B0C1F2B4A863200AE9FA1 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24B0C1E2B4A863200AE9FA1 /* WebView.swift */; };
 		C24B0C212B4A89CC00AE9FA1 /* UserDetailsCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24B0C202B4A89CC00AE9FA1 /* UserDetailsCardView.swift */; };
+		C24B0C272B4A8DB800AE9FA1 /* RepositoryListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24B0C262B4A8DB800AE9FA1 /* RepositoryListViewModel.swift */; };
 		C25E6FBC2B4805240070C832 /* GitNetworkTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25E6FBB2B4805240070C832 /* GitNetworkTarget.swift */; };
 		C2E33DBD2B46D5F2006EC323 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E33DBC2B46D5F2006EC323 /* Colors.swift */; };
 		C2E33DC32B46D8C1006EC323 /* UserDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E33DC22B46D8C1006EC323 /* UserDetailsView.swift */; };
@@ -43,6 +44,8 @@
 		C24B0C1C2B4A7BC600AE9FA1 /* UserDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsViewModel.swift; sourceTree = "<group>"; };
 		C24B0C1E2B4A863200AE9FA1 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		C24B0C202B4A89CC00AE9FA1 /* UserDetailsCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsCardView.swift; sourceTree = "<group>"; };
+		C24B0C262B4A8DB800AE9FA1 /* RepositoryListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryListViewModel.swift; sourceTree = "<group>"; };
+		C24B0C282B4A9D6400AE9FA1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		C25E6FBB2B4805240070C832 /* GitNetworkTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitNetworkTarget.swift; sourceTree = "<group>"; };
 		C2E33DBC2B46D5F2006EC323 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		C2E33DC22B46D8C1006EC323 /* UserDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsView.swift; sourceTree = "<group>"; };
@@ -95,6 +98,7 @@
 		C24734C12B46BE6500D8F6D9 /* git-user-explorer */ = {
 			isa = PBXGroup;
 			children = (
+				C24B0C282B4A9D6400AE9FA1 /* Info.plist */,
 				C24B0C232B4A8BEB00AE9FA1 /* Model */,
 				C24B0C222B4A8BE600AE9FA1 /* View */,
 				C25E6FB92B48022B0070C832 /* SharedUtilities */,
@@ -117,6 +121,7 @@
 		C24B0C222B4A8BE600AE9FA1 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C24B0C292B4BC55C00AE9FA1 /* ReusableView */,
 				C24B0C252B4A8C2900AE9FA1 /* Repo */,
 				C24B0C242B4A8C1500AE9FA1 /* User */,
 			);
@@ -151,8 +156,16 @@
 			children = (
 				C2E33DCB2B47ED99006EC323 /* RepositoryListView.swift */,
 				C2E33DCD2B47EDA3006EC323 /* RepositoryCellView.swift */,
+				C24B0C262B4A8DB800AE9FA1 /* RepositoryListViewModel.swift */,
 			);
 			path = Repo;
+			sourceTree = "<group>";
+		};
+		C24B0C292B4BC55C00AE9FA1 /* ReusableView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ReusableView;
 			sourceTree = "<group>";
 		};
 		C25E6FB92B48022B0070C832 /* SharedUtilities */ = {
@@ -319,6 +332,7 @@
 				C25E6FBC2B4805240070C832 /* GitNetworkTarget.swift in Sources */,
 				C24B0C212B4A89CC00AE9FA1 /* UserDetailsCardView.swift in Sources */,
 				C24734C32B46BE6500D8F6D9 /* git_user_explorerApp.swift in Sources */,
+				C24B0C272B4A8DB800AE9FA1 /* RepositoryListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -451,18 +465,19 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"git-user-explorer/Preview Content\"";
 				DEVELOPMENT_TEAM = 7S73LM65L7;
 				ENABLE_APP_SANDBOX = NO;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "git-user-explorer/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -470,9 +485,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "paramithatm.git-user-explorer";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -483,18 +501,19 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"git-user-explorer/Preview Content\"";
 				DEVELOPMENT_TEAM = 7S73LM65L7;
 				ENABLE_APP_SANDBOX = NO;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "git-user-explorer/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -502,9 +521,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "paramithatm.git-user-explorer";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

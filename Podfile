@@ -7,5 +7,6 @@ target 'git-user-explorer' do
 
   # Pods for git-user-explorer
   pod 'Moya/Combine', '~> 15.0'
+  pod 'FLEX', :configurations => ['Debug']
 
 end
