@@ -10,7 +10,7 @@ import SwiftUI
 
 struct UserDetailsView: View {
     
-    @StateObject var viewModel = UserDetailsViewModel(id: "")
+    @StateObject var viewModel: UserDetailsViewModel
     
     init(id: String) {
         _viewModel = StateObject(wrappedValue: UserDetailsViewModel(id: id))
@@ -28,7 +28,8 @@ struct UserDetailsView: View {
             case let .showResult(user):
                 VStack {
                     UserDetailsCardView(user: user)
-                    RepositoryListView()
+                    RepositoryListView(id: user.id)
+                    Spacer()
                 }
                 
             }

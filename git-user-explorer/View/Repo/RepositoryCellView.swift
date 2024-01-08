@@ -9,43 +9,39 @@ import Foundation
 import SwiftUI
 
 struct RepositoryCellView: View {
+    var repo: RepoBasicModel
     
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
-                Image(systemName: "globe")
+                Image(systemName: "bookmark")
                     .imageScale(.large)
                     .foregroundStyle(.tint)
-                Text("nh-line-bot")
+                Text(repo.fullName)
             }
-            Text("Description yadda yadda yadda")
+            if let description = repo.description {
+                Text(description)
+            }
             HStack {
                 HStack {
                     Image(systemName: "book")
                         .imageScale(.large)
                         .foregroundStyle(.tint)
-                    Text("Swift")
+                    Text(repo.language ?? "Unknown language")
                 }
                 
                 HStack {
                     Image(systemName: "star")
                         .imageScale(.large)
                         .foregroundStyle(.tint)
-                    Text("1.2k")
-                }
-                
-                HStack {
-                    Image(systemName: "globe")
-                        .imageScale(.large)
-                        .foregroundStyle(.tint)
-                    Text("200")
+                    Text("\(repo.starsCount)")
                 }
             }
         }
     }
 }
 
-#Preview {
-    RepositoryCellView()
-}
-
+//#Preview {
+//    RepositoryCellView()
+//}
+//

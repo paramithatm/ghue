@@ -7,11 +7,24 @@
 
 import Foundation
 
-internal struct RepoBasicModel: Decodable {
-    internal var shortName: String
-    internal var fullname: String
-    internal var description: String
-    internal var language: String
-    internal var stars: Int
-    internal var repoUrl: URL?
+internal struct RepoBasicModel: Identifiable {
+    internal var id: String { fullName }
+    
+    internal var fullName: String
+    internal var description: String?
+    internal var language: String?
+    internal var starsCount: Int
+    internal var repoUrl: String
+    internal var isForked: Bool
+}
+
+extension RepoBasicModel: Decodable, Equatable {
+    enum CodingKeys: String, CodingKey {
+        case fullName = "full_name"
+        case description
+        case language = "language"
+        case starsCount = "stargazers_count"
+        case repoUrl = "html_url"
+        case isForked = "fork"
+    }
 }
