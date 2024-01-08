@@ -8,8 +8,9 @@
 import Moya
 
 enum GitNetworkTarget {
-    case getUserList
+    case getUserList(current: Int, pagination: Int)
     case getUserDetails(id: String)
+    case getRepoList(id: String)
 }
 
 extension GitNetworkTarget: TargetType {
@@ -26,22 +27,42 @@ extension GitNetworkTarget: TargetType {
             return "/users"
         case let .getUserDetails(id):
             return "/users/\(id)"
+        case let .getRepoList(id):
+            return "/users/\(id)/repos"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .getUserList, .getUserDetails:
+        case .getUserList, .getUserDetails, .getRepoList:
             return .get
         }
     }
     
+    var parameters: [String: Any] {
+        switch self {
+        
+        case let .getUserList(current, pagination):
+            [
+                    "per_page": "15",
+                    "page": pagination,
+                    "since": current
+            ]
+        case .getUserDetails:
+            [:]
+        case .getRepoList:
+            [:]
+        }
+    }
+    
     var task: Moya.Task {
-        return .requestPlain
+        return .requestParameters(parameters: parameters, encoding: URLEncoding.default)
     }
     
     var headers: [String : String]? {
-        return [:]
+        return [
+            "Accept": "application/vnd.github+json"
+        ]
     }
     
     
