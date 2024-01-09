@@ -20,7 +20,7 @@ struct UserListView: View {
             case .loading:
                 ProgressView()
             case let .showResult(response):
-                NavigationView {
+//                NavigationView {
                     List(response) { user in
                         NavigationLink(
                             destination: UserDetailsView(id: user.username)) {
@@ -29,8 +29,8 @@ struct UserListView: View {
                                         avatarUrl: user.avatarUrl ?? ""
                                     )
                                 }
-                    }.navigationTitle("GitHub User Explorer")
-                }
+                    }//.navigationTitle("GitHub User Explorer")
+//                }
             case .error(let error):
                 Text(error.localizedDescription)
             }

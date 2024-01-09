@@ -10,9 +10,9 @@ import SwiftUI
 struct ContentView: View {
     
     var body: some View {
-        VStack {
-            UserListView()
-        }
+        NavigationView {
+            SearchView()
+        }.navigationTitle("GitHub User Explorer")
     }
 }
 

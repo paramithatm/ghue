@@ -15,6 +15,9 @@
 		C212D2182B4BE74500AE4A6E /* Image+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212D2172B4BE74500AE4A6E /* Image+Style.swift */; };
 		C212D21A2B4BECFD00AE4A6E /* Secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212D2192B4BECFD00AE4A6E /* Secret.swift */; };
 		C212D21C2B4BEDB000AE4A6E /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = C212D21B2B4BEDB000AE4A6E /* Config.plist */; };
+		C212D21F2B4BEFCD00AE4A6E /* SearchUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212D21E2B4BEFCD00AE4A6E /* SearchUserView.swift */; };
+		C212D2212B4BEFD500AE4A6E /* SearchUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212D2202B4BEFD500AE4A6E /* SearchUserViewModel.swift */; };
+		C212D2232B4BF23D00AE4A6E /* SearchResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212D2222B4BF23D00AE4A6E /* SearchResponseModel.swift */; };
 		C24734C32B46BE6500D8F6D9 /* git_user_explorerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24734C22B46BE6500D8F6D9 /* git_user_explorerApp.swift */; };
 		C24734C52B46BE6500D8F6D9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24734C42B46BE6500D8F6D9 /* ContentView.swift */; };
 		C24734C72B46BE6700D8F6D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C24734C62B46BE6700D8F6D9 /* Assets.xcassets */; };
@@ -44,6 +47,9 @@
 		C212D2172B4BE74500AE4A6E /* Image+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Style.swift"; sourceTree = "<group>"; };
 		C212D2192B4BECFD00AE4A6E /* Secret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret.swift; sourceTree = "<group>"; };
 		C212D21B2B4BEDB000AE4A6E /* Config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
+		C212D21E2B4BEFCD00AE4A6E /* SearchUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUserView.swift; sourceTree = "<group>"; };
+		C212D2202B4BEFD500AE4A6E /* SearchUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUserViewModel.swift; sourceTree = "<group>"; };
+		C212D2222B4BF23D00AE4A6E /* SearchResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponseModel.swift; sourceTree = "<group>"; };
 		C24734BF2B46BE6500D8F6D9 /* git-user-explorer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "git-user-explorer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C24734C22B46BE6500D8F6D9 /* git_user_explorerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = git_user_explorerApp.swift; sourceTree = "<group>"; };
 		C24734C42B46BE6500D8F6D9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -83,6 +89,15 @@
 				520BF47CCFD5DA7D0E77D626 /* Pods-git-user-explorer.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		C212D21D2B4BEFC000AE4A6E /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				C212D21E2B4BEFCD00AE4A6E /* SearchUserView.swift */,
+				C212D2202B4BEFD500AE4A6E /* SearchUserViewModel.swift */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 		C24734B62B46BE6500D8F6D9 = {
@@ -130,7 +145,7 @@
 		C24B0C222B4A8BE600AE9FA1 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				C24B0C292B4BC55C00AE9FA1 /* ReusableView */,
+				C212D21D2B4BEFC000AE4A6E /* Search */,
 				C24B0C252B4A8C2900AE9FA1 /* Repo */,
 				C24B0C242B4A8C1500AE9FA1 /* User */,
 			);
@@ -143,6 +158,7 @@
 				C20301182B48184000116B6E /* UserDetailsModel.swift */,
 				C20301142B48110500116B6E /* UserBasicModel.swift */,
 				C203011C2B48200900116B6E /* RepoBasicModel.swift */,
+				C212D2222B4BF23D00AE4A6E /* SearchResponseModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -168,13 +184,6 @@
 				C24B0C262B4A8DB800AE9FA1 /* RepositoryListViewModel.swift */,
 			);
 			path = Repo;
-			sourceTree = "<group>";
-		};
-		C24B0C292B4BC55C00AE9FA1 /* ReusableView */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ReusableView;
 			sourceTree = "<group>";
 		};
 		C25E6FB92B48022B0070C832 /* SharedUtilities */ = {
@@ -341,12 +350,15 @@
 				C20301152B48110500116B6E /* UserBasicModel.swift in Sources */,
 				C2E33DC52B46DE8B006EC323 /* UserListView.swift in Sources */,
 				C2E33DC92B47C281006EC323 /* UserCellView.swift in Sources */,
+				C212D21F2B4BEFCD00AE4A6E /* SearchUserView.swift in Sources */,
 				C24734C52B46BE6500D8F6D9 /* ContentView.swift in Sources */,
 				C2E33DCE2B47EDA3006EC323 /* RepositoryCellView.swift in Sources */,
 				C2E33DBD2B46D5F2006EC323 /* Colors.swift in Sources */,
 				C25E6FBC2B4805240070C832 /* GitNetworkTarget.swift in Sources */,
+				C212D2212B4BEFD500AE4A6E /* SearchUserViewModel.swift in Sources */,
 				C24B0C212B4A89CC00AE9FA1 /* UserDetailsCardView.swift in Sources */,
 				C24734C32B46BE6500D8F6D9 /* git_user_explorerApp.swift in Sources */,
+				C212D2232B4BF23D00AE4A6E /* SearchResponseModel.swift in Sources */,
 				C212D2162B4BDE4100AE4A6E /* Typography.swift in Sources */,
 				C24B0C272B4A8DB800AE9FA1 /* RepositoryListViewModel.swift in Sources */,
 			);
