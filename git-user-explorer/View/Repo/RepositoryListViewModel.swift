@@ -5,6 +5,7 @@
 //  Created by Paramitha on 07/01/24.
 //
 
+import Combine
 import Moya
 import SwiftUI
 
@@ -20,7 +21,8 @@ class RepositoryListViewModel: ObservableObject {
     
     var id: String
     private let provider: MoyaProvider<GitNetworkTarget>
-    
+    private var cancellables = Set<AnyCancellable>()
+
     init(id: String,
          viewState: RepositoryListViewState = .initialState,
          provider: MoyaProvider<GitNetworkTarget> = MoyaProvider<GitNetworkTarget>()) {
@@ -32,20 +34,34 @@ class RepositoryListViewModel: ObservableObject {
     func fetchRepositoryList() {
         viewState = .loading
         
-        provider.request(.getRepoList(id: id)) { [weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case let .success(response):
-                
-                let repos = try! response.map([RepoBasicModel].self)
-                
-                // filter out forked repos
-                let filteredRepos = repos.filter { !$0.isForked }
-                
-                self.viewState = .showResult(filteredRepos)
-            case let .failure(error):
-                self.viewState = .error(error)
+        let request = Future<[RepoBasicModel], Error> { [weak self] promise in
+            self?.provider.request(.getRepoList(id: self?.id ?? "")) { result in
+                switch result {
+                case let .success(response):
+                    do {
+                        let repos = try response.map([RepoBasicModel].self)
+                        
+                        // filter out forked repos as per requirement
+                        let filteredRepos = repos.filter { !$0.isForked }
+                        promise(.success(filteredRepos))
+                    } catch let error {
+                        promise(.failure(error))
+                    }
+                case let .failure(error):
+                    promise(.failure(error))
+                }
             }
         }
+        
+        request
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { [weak self] completion in
+                if case let .failure(error) = completion {
+                    self?.viewState = .error(error)
+                }
+            }, receiveValue: { [weak self] repos in
+                self?.viewState = .showResult(repos)
+            })
+            .store(in: &cancellables)
     }
 }
