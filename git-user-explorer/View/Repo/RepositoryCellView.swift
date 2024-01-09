@@ -43,8 +43,3 @@ struct RepositoryCellView: View {
         }
     }
 }
-
-#Preview {
-    RepositoryListView(id: "mojombo")
-}
-

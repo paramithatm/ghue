@@ -17,7 +17,7 @@ struct SearchView: View {
         Group {
             switch viewModel.viewState {
             case .initialState:
-                Text("Search for someone")
+                EmptyView()
             case .loading:
                 ProgressView()
             case let .showResult(response):

@@ -18,6 +18,7 @@
 		C212D21F2B4BEFCD00AE4A6E /* SearchUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212D21E2B4BEFCD00AE4A6E /* SearchUserView.swift */; };
 		C212D2212B4BEFD500AE4A6E /* SearchUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212D2202B4BEFD500AE4A6E /* SearchUserViewModel.swift */; };
 		C212D2232B4BF23D00AE4A6E /* SearchResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212D2222B4BF23D00AE4A6E /* SearchResponseModel.swift */; };
+		C212D2292B4D473600AE4A6E /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212D2282B4D473600AE4A6E /* EmptyView.swift */; };
 		C24734C32B46BE6500D8F6D9 /* git_user_explorerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24734C22B46BE6500D8F6D9 /* git_user_explorerApp.swift */; };
 		C24734C52B46BE6500D8F6D9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24734C42B46BE6500D8F6D9 /* ContentView.swift */; };
 		C24734C72B46BE6700D8F6D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C24734C62B46BE6700D8F6D9 /* Assets.xcassets */; };
@@ -50,6 +51,7 @@
 		C212D21E2B4BEFCD00AE4A6E /* SearchUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUserView.swift; sourceTree = "<group>"; };
 		C212D2202B4BEFD500AE4A6E /* SearchUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUserViewModel.swift; sourceTree = "<group>"; };
 		C212D2222B4BF23D00AE4A6E /* SearchResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponseModel.swift; sourceTree = "<group>"; };
+		C212D2282B4D473600AE4A6E /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		C24734BF2B46BE6500D8F6D9 /* git-user-explorer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "git-user-explorer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C24734C22B46BE6500D8F6D9 /* git_user_explorerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = git_user_explorerApp.swift; sourceTree = "<group>"; };
 		C24734C42B46BE6500D8F6D9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -100,6 +102,14 @@
 			path = Search;
 			sourceTree = "<group>";
 		};
+		C212D2272B4D472D00AE4A6E /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				C212D2282B4D473600AE4A6E /* EmptyView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		C24734B62B46BE6500D8F6D9 = {
 			isa = PBXGroup;
 			children = (
@@ -125,7 +135,7 @@
 				C24B0C282B4A9D6400AE9FA1 /* Info.plist */,
 				C24B0C232B4A8BEB00AE9FA1 /* Model */,
 				C24B0C222B4A8BE600AE9FA1 /* View */,
-				C25E6FB92B48022B0070C832 /* SharedUtilities */,
+				C25E6FB92B48022B0070C832 /* Shared */,
 				C24734C22B46BE6500D8F6D9 /* git_user_explorerApp.swift */,
 				C24734C42B46BE6500D8F6D9 /* ContentView.swift */,
 				C24734C62B46BE6700D8F6D9 /* Assets.xcassets */,
@@ -186,7 +196,7 @@
 			path = Repo;
 			sourceTree = "<group>";
 		};
-		C25E6FB92B48022B0070C832 /* SharedUtilities */ = {
+		C25E6FB92B48022B0070C832 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
 				C2E33DBB2B46D5D1006EC323 /* DesignSystem */,
@@ -194,7 +204,7 @@
 				C24B0C1E2B4A863200AE9FA1 /* WebView.swift */,
 				C212D2192B4BECFD00AE4A6E /* Secret.swift */,
 			);
-			path = SharedUtilities;
+			path = Shared;
 			sourceTree = "<group>";
 		};
 		C25E6FBA2B4802320070C832 /* Networking */ = {
@@ -208,6 +218,7 @@
 		C2E33DBB2B46D5D1006EC323 /* DesignSystem */ = {
 			isa = PBXGroup;
 			children = (
+				C212D2272B4D472D00AE4A6E /* Components */,
 				C2E33DBC2B46D5F2006EC323 /* Colors.swift */,
 				C212D2152B4BDE4100AE4A6E /* Typography.swift */,
 				C212D2172B4BE74500AE4A6E /* Image+Style.swift */,
@@ -342,6 +353,7 @@
 				C212D21A2B4BECFD00AE4A6E /* Secret.swift in Sources */,
 				C2E33DC72B46EC1C006EC323 /* UserListViewModel.swift in Sources */,
 				C2E33DCC2B47ED99006EC323 /* RepositoryListView.swift in Sources */,
+				C212D2292B4D473600AE4A6E /* EmptyView.swift in Sources */,
 				C20301192B48184000116B6E /* UserDetailsModel.swift in Sources */,
 				C24B0C1D2B4A7BC600AE9FA1 /* UserDetailsViewModel.swift in Sources */,
 				C212D2182B4BE74500AE4A6E /* Image+Style.swift in Sources */,
