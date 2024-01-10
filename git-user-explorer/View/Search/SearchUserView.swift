@@ -9,8 +9,8 @@ import Foundation
 import SwiftUI
 
 // Main view
-struct SearchView: View {
-    @StateObject private var viewModel = SearchViewModel()
+struct SearchUserView: View {
+    @StateObject private var viewModel = SearchUserViewModel()
 
     var body: some View {
         
@@ -29,7 +29,7 @@ struct SearchView: View {
                                     avatarUrl: user.avatarUrl ?? ""
                                 )
                             }
-                }.navigationTitle("GitHub User Explorer")
+                }
             case let .error(message):
                 Text(message)
             }

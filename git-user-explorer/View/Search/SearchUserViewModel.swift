@@ -9,22 +9,22 @@ import Combine
 import Foundation
 import Moya
 
-enum SearchViewState {
+enum SearchUserViewState {
     case initialState
     case loading
     case showResult([UserBasicModel])
     case error(String)
 }
 
-class SearchViewModel: ObservableObject {
+class SearchUserViewModel: ObservableObject {
     
     @Published var searchText = ""
     
-    @Published var viewState: SearchViewState = .initialState
+    @Published var viewState: SearchUserViewState = .initialState
     private let provider: MoyaProvider<GitNetworkTarget>
     
     
-    init(searchText: String = "", viewState: SearchViewState = .initialState, provider: MoyaProvider<GitNetworkTarget> = MoyaProvider<GitNetworkTarget>()) {
+    init(searchText: String = "", viewState: SearchUserViewState = .initialState, provider: MoyaProvider<GitNetworkTarget> = MoyaProvider<GitNetworkTarget>()) {
         self.searchText = searchText
         self.viewState = viewState
         self.provider = provider
