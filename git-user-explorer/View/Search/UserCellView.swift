@@ -16,7 +16,7 @@ struct UserCellView: View {
     var body: some View {
         VStack(alignment: .leading) {
             HStack(spacing: 16) {
-                AsyncImage(url: URL(string: avatarUrl)) { image in
+                AsyncImage(url: URL(string: avatarUrl+"&s=300")) { image in
                     image
                         .resizable()
                         .aspectRatio(contentMode: .fit)

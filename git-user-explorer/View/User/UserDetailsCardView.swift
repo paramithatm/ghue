@@ -13,24 +13,26 @@ struct UserDetailsCardView: View {
     var user: UserDetailsModel
     
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 16) {
             
             // profile card
-            HStack {
-                AsyncImage(url: URL(string: user.avatarUrl)) { image in
+            HStack(spacing: 16) {
+                AsyncImage(url: URL(string: user.avatarUrl+"&s=300")) { image in
                     image
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: 80)
-                        .cornerRadius(40)
+                        .frame(width: 64)
+                        .cornerRadius(32)
                 } placeholder: {
                     ProgressView()
-                        .frame(width: 80, height: 80)
+                        .frame(width: 64, height: 64)
                 }
                 
                 VStack(alignment: .leading) {
-                    Text(user.fullName)
-                        .title()
+                    if let fullName = user.fullName {
+                        Text(fullName)
+                            .title()
+                    }
                     Text(user.username)
                         .subtitle()
                 }
@@ -62,8 +64,4 @@ struct UserDetailsCardView: View {
         }.padding(16)
     }
     
-}
-
-#Preview {
-    UserDetailsCardView(user: UserDetailsModel(username: "paramithatm", fullName: "Paramitha", avatarUrl: "https://avatars.githubusercontent.com/u/24902812?s=100", followingCount: 100, followersCount: 20, publicRepoCount: 69))
 }
