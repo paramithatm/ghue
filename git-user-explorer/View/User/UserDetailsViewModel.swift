@@ -21,38 +21,21 @@ class UserDetailsViewModel: ObservableObject {
     
     var id: String
     private var cancellables = Set<AnyCancellable>()
-    private let provider: MoyaProvider<GitNetworkTarget>
+    private let networkProvider: GitNetworkProviderProtocol
     
     init(id: String,
          viewState: UserDetailsViewState = .initialState,
-         provider: MoyaProvider<GitNetworkTarget> = MoyaProvider<GitNetworkTarget>()
+         networkProvider: GitNetworkProviderProtocol = GitNetworkProvider()
     ) {
         self.id = id
         self.viewState = viewState
-        self.provider = provider
+        self.networkProvider = networkProvider
     }
     
     func fetchUserDetails() {
         viewState = .loading
         
-        let request = Future<UserDetailsModel, Error> { [weak self] promise in
-            guard let self = self else { return }
-            self.provider.request(.getUserDetails(id: self.id)) { result in
-                switch result {
-                case let .success(response):
-                    do {
-                        let user = try response.map(UserDetailsModel.self)
-                        promise(.success(user))
-                    } catch let error {
-                        promise(.failure(error))
-                    }
-                case let .failure(error):
-                    promise(.failure(error))
-                }
-            }
-        }
-        
-        request
+        networkProvider.getUserDetails(id: id)
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { [weak self] completion in
                 if case let .failure(error) = completion {

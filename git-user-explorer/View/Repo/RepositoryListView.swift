@@ -41,7 +41,3 @@ struct RepositoryListView: View {
         }
     }
 }
-
-//#Preview {
-//    RepositoryListView()
-//}
