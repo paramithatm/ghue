@@ -28,7 +28,7 @@ class SearchUserViewModel: ObservableObject {
     @Published var viewState: SearchUserViewState = .initialState
 
     private let provider: MoyaProvider<GitNetworkTarget>
-    
+    private var cancellables: Set<AnyCancellable> = []
     
     init(provider: MoyaProvider<GitNetworkTarget> = MoyaProvider<GitNetworkTarget>()) {
         self.provider = provider
@@ -40,8 +40,6 @@ class SearchUserViewModel: ObservableObject {
             .store(in: &cancellables)
     }
 
-    private var cancellables: Set<AnyCancellable> = []
-
     
     func fetchSearchResult(keyword: String) {
         let trimmedKeyword = keyword.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -49,12 +47,13 @@ class SearchUserViewModel: ObservableObject {
         guard !trimmedKeyword.isEmpty else {
             viewState = .initialState
             users = []
+            currentPage = 1
             return
         }
         
         if trimmedKeyword != lastSearchKeyword || currentPage == 1 {
-            users = []  // Reset users if the keyword has changed or it's a new search
-            currentPage = 1    // Reset currentPage to the first page
+            users = []
+            currentPage = 1
             lastSearchKeyword = trimmedKeyword
         }
         
@@ -86,7 +85,7 @@ class SearchUserViewModel: ObservableObject {
             if viewState == .showResult,
                let lastUser = users.last,
                lastUser == user {
-                currentPage += 1
+                currentPage += 1 // go to next page
                 fetchSearchResult(keyword: searchKeyword)
             }
         }

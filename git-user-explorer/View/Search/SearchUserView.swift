@@ -8,7 +8,6 @@
 import Foundation
 import SwiftUI
 
-// Main view
 struct SearchUserView: View {
     @StateObject private var viewModel = SearchUserViewModel()
 
@@ -40,10 +39,7 @@ struct SearchUserView: View {
                     )
                 }
                 .onAppear {
-                    // Load more content when the last item appears
-                    if user == viewModel.users.last {
-                        viewModel.loadMoreContentIfNeeded(currentItem: user)
-                    }
+                    viewModel.loadMoreContentIfNeeded(currentItem: user)
                 }
             
         }
