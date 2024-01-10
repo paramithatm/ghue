@@ -129,6 +129,7 @@
 		C24734C12B46BE6500D8F6D9 /* git-user-explorer */ = {
 			isa = PBXGroup;
 			children = (
+				C25E6FBA2B4802320070C832 /* Networking */,
 				C24B0C282B4A9D6400AE9FA1 /* Info.plist */,
 				C24B0C232B4A8BEB00AE9FA1 /* Model */,
 				C24B0C222B4A8BE600AE9FA1 /* View */,
@@ -194,7 +195,6 @@
 			isa = PBXGroup;
 			children = (
 				C2E33DBB2B46D5D1006EC323 /* DesignSystem */,
-				C25E6FBA2B4802320070C832 /* Networking */,
 				C24B0C1E2B4A863200AE9FA1 /* WebView.swift */,
 				C212D2192B4BECFD00AE4A6E /* Secret.swift */,
 			);
