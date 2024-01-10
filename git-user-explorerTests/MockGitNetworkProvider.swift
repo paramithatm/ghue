@@ -8,7 +8,7 @@
 import Combine
 @testable import git_user_explorer
 
-class MockNetworkProvider: GitNetworkProviderProtocol {
+class MockGitNetworkProvider: GitNetworkProviderProtocol {
     
     internal var getUserDetailsResult: ((String) -> Future<UserDetailsModel, Error>)!
     internal var getRepoListResult: ((String, Int) -> Future<[RepoBasicModel], Error>)!

@@ -26,7 +26,7 @@ struct UserDetailsView: View {
             case .loading:
                 ProgressView()
             case .error(let error):
-                Text(error.localizedDescription)
+                Text(error)
             case let .showResult(user):
                 VStack {
                     UserDetailsCardView(user: user)

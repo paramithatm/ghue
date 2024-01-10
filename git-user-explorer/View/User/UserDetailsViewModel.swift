@@ -9,11 +9,11 @@ import Combine
 import Moya
 import SwiftUI
 
-enum UserDetailsViewState {
+enum UserDetailsViewState: Equatable {
     case initialState
     case loading
     case showResult(UserDetailsModel)
-    case error(Error)
+    case error(String)
 }
 
 class UserDetailsViewModel: ObservableObject {
@@ -39,13 +39,11 @@ class UserDetailsViewModel: ObservableObject {
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { [weak self] completion in
                 if case let .failure(error) = completion {
-                    self?.viewState = .error(error)
+                    self?.viewState = .error(error.localizedDescription)
                 }
             }, receiveValue: { [weak self] user in
                 self?.viewState = .showResult(user)
             })
             .store(in: &cancellables)
-        
     }
-    
 }
