@@ -9,15 +9,18 @@ import Combine
 import Moya
 import SwiftUI
 
-enum RepositoryListViewState {
+enum RepositoryListViewState: Equatable {
     case initialState
     case loading
-    case showResult([RepoBasicModel])
-    case error(Error)
+    case showResult
+    case error(String)
 }
 
 class RepositoryListViewModel: ObservableObject {
     @Published var viewState: RepositoryListViewState = .initialState
+    @Published private(set)var repos: [RepoBasicModel] = []
+    
+    @Published var currentPage = 1
     
     var id: String
     private let provider: MoyaProvider<GitNetworkTarget>
@@ -36,7 +39,7 @@ class RepositoryListViewModel: ObservableObject {
         
         let request = Future<[RepoBasicModel], Error> { [weak self] promise in
             guard let self = self else { return }
-            self.provider.request(.getRepoList(id: self.id)) { result in
+            self.provider.request(.getRepoList(id: self.id, page: self.currentPage)) { result in
                 switch result {
                 case let .success(response):
                     do {
@@ -58,11 +61,24 @@ class RepositoryListViewModel: ObservableObject {
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { [weak self] completion in
                 if case let .failure(error) = completion {
-                    self?.viewState = .error(error)
+                    self?.viewState = .error(error.localizedDescription)
                 }
             }, receiveValue: { [weak self] repos in
-                self?.viewState = .showResult(repos)
+                self?.repos += repos
+                self?.viewState = .showResult
             })
             .store(in: &cancellables)
+    }
+    
+    func loadMoreContentIfNeeded(currentItem repo: RepoBasicModel?) {
+        guard let repo = repo, viewState != .loading else {
+            return
+        }
+        if viewState == .showResult,
+           let lastItem = repos.last,
+           lastItem == repo {
+            currentPage += 1
+            fetchRepositoryList()
+        }
     }
 }

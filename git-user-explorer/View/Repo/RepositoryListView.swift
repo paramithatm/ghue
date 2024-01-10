@@ -21,14 +21,17 @@ struct RepositoryListView: View {
             switch viewModel.viewState {
             case .initialState:
                 Text("wkwk")
-            case .loading:
+            case .loading where viewModel.repos.isEmpty:
                 ProgressView()
             case let .error(error):
-                Text(error.localizedDescription)
-            case let .showResult(repos):
-                List(repos) { repo in
+                Text(error)
+            case .showResult, .loading:
+                List(viewModel.repos) { repo in
                     NavigationLink(destination: WebView(urlString: repo.repoUrl)) {
                         RepositoryCellView(repo: repo)
+                    }
+                    .onAppear {
+                        viewModel.loadMoreContentIfNeeded(currentItem: repo)
                     }
                 }
             }

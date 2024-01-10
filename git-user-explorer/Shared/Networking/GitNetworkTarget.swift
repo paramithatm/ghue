@@ -9,7 +9,7 @@ import Moya
 
 enum GitNetworkTarget {
     case getUserDetails(id: String)
-    case getRepoList(id: String)
+    case getRepoList(id: String, page: Int)
     case searchUsers(keyword: String, page: Int)
 }
 
@@ -25,7 +25,7 @@ extension GitNetworkTarget: TargetType {
         switch self {
         case let .getUserDetails(id):
             return "/users/\(id)"
-        case let .getRepoList(id):
+        case let .getRepoList(id, _):
             return "/users/\(id)/repos"
         case .searchUsers:
             return "/search/users"
@@ -47,8 +47,14 @@ extension GitNetworkTarget: TargetType {
                 "per_page": 1000,
                 "page": page
             ]
-        case .getUserDetails, .getRepoList:
+        case let .getRepoList(_, page):
+            [
+                "per_page": 10,
+                "page": page
+            ]
+        case .getUserDetails:
             [:]
+
         }
     }
     

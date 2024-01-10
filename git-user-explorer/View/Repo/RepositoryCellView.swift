@@ -16,7 +16,7 @@ struct RepositoryCellView: View {
             HStack {
                 Image(systemName: "bookmark")
                     .icon(.medium)
-                Text(repo.fullName)
+                Text(repo.name)
                     .thinTitle()
             }
             if let description = repo.description {
