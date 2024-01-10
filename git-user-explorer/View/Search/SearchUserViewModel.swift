@@ -21,7 +21,7 @@ class SearchUserViewModel: ObservableObject {
     @Published var searchKeyword = ""
     private var lastSearchKeyword = ""
 
-    @Published var currentPage = 10
+    @Published var currentPage = 1
     
     @Published private(set)var users: [UserBasicModel] = []
     
