@@ -18,22 +18,34 @@ struct SearchUserView: View {
             switch viewModel.viewState {
             case .initialState:
                 EmptyView()
-            case .loading:
+            case .loading where viewModel.users.isEmpty:
                 ProgressView()
-            case let .showResult(response):
-                List(response) { user in
-                    NavigationLink(
-                        destination: UserDetailsView(id: user.username)) {
-                                UserCellView(
-                                    name: user.username,
-                                    avatarUrl: user.avatarUrl ?? ""
-                                )
-                            }
-                }
+            case .showResult, .loading:
+                userList
+                
             case let .error(message):
                 Text(message)
             }
-        }.searchable(text: $viewModel.searchText, prompt: "Search Users")
+        }.searchable(text: $viewModel.searchKeyword, prompt: "Search Users")
         
+    }
+    
+    private var userList: some View {
+        List(viewModel.users) { user in
+            NavigationLink(
+                destination: UserDetailsView(id: user.username)) {
+                    UserCellView(
+                        name: user.username,
+                        avatarUrl: user.avatarUrl ?? ""
+                    )
+                }
+                .onAppear {
+                    // Load more content when the last item appears
+                    if user == viewModel.users.last {
+                        viewModel.loadMoreContentIfNeeded(currentItem: user)
+                    }
+                }
+            
+        }
     }
 }
