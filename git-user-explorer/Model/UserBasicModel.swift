@@ -10,7 +10,7 @@ import Foundation
 internal struct UserBasicModel: Identifiable {
     internal var id: String { username }
     internal var username: String
-    internal var avatarUrl: String?
+    internal var avatarUrl: String
 }
 
 extension UserBasicModel: Decodable, Equatable {

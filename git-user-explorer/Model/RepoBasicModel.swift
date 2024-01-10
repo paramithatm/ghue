@@ -8,9 +8,9 @@
 import Foundation
 
 internal struct RepoBasicModel: Identifiable {
-    internal var id: String { fullName }
+    internal var id: String { name }
     
-    internal var fullName: String
+    internal var name: String
     internal var description: String?
     internal var language: String?
     internal var starsCount: Int
@@ -20,9 +20,9 @@ internal struct RepoBasicModel: Identifiable {
 
 extension RepoBasicModel: Decodable, Equatable {
     enum CodingKeys: String, CodingKey {
-        case fullName = "name"
+        case name
         case description
-        case language = "language"
+        case language
         case starsCount = "stargazers_count"
         case repoUrl = "html_url"
         case isForked = "fork"

@@ -10,7 +10,7 @@ import Foundation
 internal struct UserDetailsModel: Identifiable {
     internal var id: String { username }
     internal var username: String
-    internal var fullName: String
+    internal var fullName: String?
     internal var avatarUrl: String
     internal var followingCount: Int
     internal var followersCount: Int
