@@ -5,7 +5,7 @@
 //  Created by Paramitha on 07/01/24.
 //
 
-//import Combine
+import Combine
 import Moya
 import SwiftUI
 
@@ -17,10 +17,10 @@ enum UserDetailsViewState {
 }
 
 class UserDetailsViewModel: ObservableObject {
-    
     @Published var viewState: UserDetailsViewState = .initialState
     
     var id: String
+    private var cancellables = Set<AnyCancellable>()
     private let provider: MoyaProvider<GitNetworkTarget>
     
     init(id: String,
@@ -35,18 +35,33 @@ class UserDetailsViewModel: ObservableObject {
     func fetchUserDetails() {
         viewState = .loading
         
-        provider.request(.getUserDetails(id: id)) { [weak self] result in
+        let request = Future<UserDetailsModel, Error> { [weak self] promise in
             guard let self = self else { return }
-            switch result {
-            case let .success(response):
-                
-                let user = try! response.map(UserDetailsModel.self)
-                
-                self.viewState = .showResult(user)
-            case let .failure(error):
-                self.viewState = .error(error)
+            self.provider.request(.getUserDetails(id: self.id)) { result in
+                switch result {
+                case let .success(response):
+                    do {
+                        let user = try response.map(UserDetailsModel.self)
+                        promise(.success(user))
+                    } catch let error {
+                        promise(.failure(error))
+                    }
+                case let .failure(error):
+                    promise(.failure(error))
+                }
             }
         }
+        
+        request
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { [weak self] completion in
+                if case let .failure(error) = completion {
+                    self?.viewState = .error(error)
+                }
+            }, receiveValue: { [weak self] user in
+                self?.viewState = .showResult(user)
+            })
+            .store(in: &cancellables)
         
     }
     

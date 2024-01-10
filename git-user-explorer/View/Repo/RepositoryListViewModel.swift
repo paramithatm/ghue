@@ -35,7 +35,8 @@ class RepositoryListViewModel: ObservableObject {
         viewState = .loading
         
         let request = Future<[RepoBasicModel], Error> { [weak self] promise in
-            self?.provider.request(.getRepoList(id: self?.id ?? "")) { result in
+            guard let self = self else { return }
+            self.provider.request(.getRepoList(id: self.id)) { result in
                 switch result {
                 case let .success(response):
                     do {
