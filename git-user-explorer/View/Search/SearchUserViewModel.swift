@@ -27,11 +27,11 @@ class SearchUserViewModel: ObservableObject {
     
     @Published var viewState: SearchUserViewState = .initialState
 
-    private let provider: MoyaProvider<GitNetworkTarget>
+    private let networkProvider: GitNetworkProviderProtocol
     private var cancellables: Set<AnyCancellable> = []
     
-    init(provider: MoyaProvider<GitNetworkTarget> = MoyaProvider<GitNetworkTarget>()) {
-        self.provider = provider
+    init(networkProvider: GitNetworkProviderProtocol = GitNetworkProvider()) {
+        self.networkProvider = networkProvider
         
         $searchKeyword
             .removeDuplicates()
@@ -59,23 +59,16 @@ class SearchUserViewModel: ObservableObject {
         
         viewState = .loading
         
-        provider.request(.searchUsers(keyword: trimmedKeyword, page: currentPage)) { [weak self] result in
-                guard let self = self else { return }
-
-                switch result {
-                case let .success(response):
-                    do {
-                        let searchResult = try response.map(SearchResponseModel.self)
-                        self.users += searchResult.items
-                        viewState = .showResult
-                    } catch {
-                        self.viewState = .error(error.localizedDescription)
-                    }
-                case let .failure(error):
-                    self.viewState = .error(error.localizedDescription)
+        networkProvider.searchUsers(keyword: keyword, page: currentPage)
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { [weak self] completion in
+                if case let .failure(error) = completion {
+                    self?.viewState = .error(error.localizedDescription)
                 }
-            }
-        
+            }, receiveValue: { [weak self] users in
+                self?.users += users
+                self?.viewState = .showResult
+            }).store(in: &cancellables)
     }
     
     func loadMoreContentIfNeeded(currentItem user: UserBasicModel?) {
@@ -85,7 +78,7 @@ class SearchUserViewModel: ObservableObject {
         if viewState == .showResult,
            let lastUser = users.last,
            lastUser == user {
-            currentPage += 1 // go to next page
+            currentPage += 1
             fetchSearchResult(keyword: searchKeyword)
         }
     }

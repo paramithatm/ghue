@@ -14,8 +14,7 @@ struct UserDetailsCardView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
-            
-            // profile card
+            // profile icon - full name & username
             HStack(spacing: 16) {
                 AsyncImage(url: URL(string: user.avatarUrl+"&s=300")) { image in
                     image
@@ -38,15 +37,8 @@ struct UserDetailsCardView: View {
                 }
             }
             
-            // repo number - following - followers
+            // following - followers
             HStack {
-                VStack {
-                    Text("\(user.publicRepoCount)")
-                        .title()
-                    Text("Repositories")
-                        .subtitle()
-                }
-                Spacer()
                 VStack {
                     Text("\(user.followingCount)")
                         .title()
@@ -60,7 +52,7 @@ struct UserDetailsCardView: View {
                     Text("Followers")
                         .subtitle()
                 }
-            }
+            }.padding(.horizontal, 64)
         }.padding(16)
     }
     

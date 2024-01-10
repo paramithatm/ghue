@@ -20,7 +20,7 @@ struct EmptyView: View {
                 .renderingMode(.template)
                 .resizable()
                 .scaledToFit()
-                .foregroundColor(.paleBlue5)
+                .foregroundColor(.justBlue)
                 .frame(width: 64, height: 64)
                 
             Text(title).title()

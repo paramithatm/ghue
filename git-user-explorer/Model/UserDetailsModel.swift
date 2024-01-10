@@ -14,7 +14,6 @@ internal struct UserDetailsModel: Identifiable {
     internal var avatarUrl: String
     internal var followingCount: Int
     internal var followersCount: Int
-    internal var publicRepoCount: Int
 }
 
 extension UserDetailsModel: Decodable, Equatable {
@@ -24,7 +23,6 @@ extension UserDetailsModel: Decodable, Equatable {
         case avatarUrl = "avatar_url"
         case followingCount = "following"
         case followersCount = "followers"
-        case publicRepoCount = "public_repos"
     }
     
 }

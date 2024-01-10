@@ -35,7 +35,7 @@ struct SearchUserView: View {
                 destination: UserDetailsView(id: user.username)) {
                     UserCellView(
                         name: user.username,
-                        avatarUrl: user.avatarUrl ?? ""
+                        avatarUrl: user.avatarUrl
                     )
                 }
                 .onAppear {

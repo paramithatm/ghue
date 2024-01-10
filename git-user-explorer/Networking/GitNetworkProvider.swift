@@ -10,21 +10,21 @@ import Moya
 
 protocol GitNetworkProviderProtocol {
     func getUserDetails(id: String) -> Future<UserDetailsModel, Error>
-//    func getRepoList(id: String, page: Int) -> Future<[RepoBasicModel], Error>
-//    func searchUsers(keyword: String, page: Int)
+    func getRepoList(id: String, page: Int) -> Future<[RepoBasicModel], Error>
+    func searchUsers(keyword: String, page: Int) -> Future<[UserBasicModel], Error>
 }
 
 class GitNetworkProvider: GitNetworkProviderProtocol {
     private let provider = MoyaProvider<GitNetworkTarget>()
     
-    func getUserDetails(id: String) -> Future<UserDetailsModel, Error> {
-        Future<UserDetailsModel, Error> { [provider] promise in
-            provider.request(.getUserDetails(id: id)) { result in
+    private func performRequest<T: Decodable>(target: GitNetworkTarget, map: @escaping (Response) throws -> T) -> Future<T, Error> {
+        Future<T, Error> { [provider] promise in
+            provider.request(target) { result in
                 switch result {
                 case let .success(response):
                     do {
-                        let userDetails = try response.map(UserDetailsModel.self)
-                        promise(.success(userDetails))
+                        let processedResult = try map(response)
+                        promise(.success(processedResult))
                     } catch let error {
                         promise(.failure(error))
                     }
@@ -35,13 +35,23 @@ class GitNetworkProvider: GitNetworkProviderProtocol {
         }
     }
     
-//    func getRepoList(id: String, page: Int) -> Future<[RepoBasicModel], Error> {
-//
-//    }
-//    
-//    func searchUsers(keyword: String, page: Int) {
-//
-//    }
+    func getUserDetails(id: String) -> Future<UserDetailsModel, Error> {
+        performRequest(target: .getUserDetails(id: id)) {
+            try $0.map(UserDetailsModel.self)
+        }
+    }
     
-    
+    func getRepoList(id: String, page: Int) -> Future<[RepoBasicModel], Error> {
+        performRequest(target: .getRepoList(id: id, page: page)) {
+            try $0.map([RepoBasicModel].self).filter { !$0.isForked } // filter out forked repos
+        }
+    }
+
+    func searchUsers(keyword: String, page: Int) -> Future<[UserBasicModel], Error> {
+        performRequest(target: .searchUsers(keyword: keyword, page: page)) { response in
+            let searchResult = try response.map(SearchResponseModel.self)
+            
+            return searchResult.items
+        }
+    }
 }

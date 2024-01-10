@@ -42,7 +42,3 @@ struct UserDetailsView: View {
         }
     }
 }
-
-//#Preview {
-//    UserDetailsView()
-//}

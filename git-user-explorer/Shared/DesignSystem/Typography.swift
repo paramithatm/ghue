@@ -10,27 +10,27 @@ import SwiftUI
 
 extension Text {
     func title() -> some View {
-        self.foregroundStyle(Color.paleBlue8)
+        self.foregroundStyle(Color.darkBlue)
             .font(.headline)
     }
     
     func subtitle() -> some View {
-        self.foregroundStyle(Color.paleBlue3)
+        self.foregroundStyle(Color.lightBlue)
             .font(.callout)
     }
     
     func thinTitle() -> some View {
-        self.foregroundStyle(Color.paleBlue8)
+        self.foregroundStyle(Color.darkBlue)
             .font(.callout)
     }
     
     func thinSubtitle() -> some View {
-        self.foregroundStyle(Color.paleBlue5)
+        self.foregroundStyle(Color.justBlue)
             .font(.subheadline)
     }
     
     func small() -> some View {
-        self.foregroundStyle(Color.paleBlue3)
+        self.foregroundStyle(Color.lightBlue)
             .font(.footnote)
     }
 }

@@ -32,7 +32,6 @@ struct RepositoryCellView: View {
                             .small()
                     }
                 }
-                
                 HStack {
                     Image(systemName: "star")
                         .icon(.small)

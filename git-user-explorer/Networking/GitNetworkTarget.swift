@@ -44,17 +44,16 @@ extension GitNetworkTarget: TargetType {
         case let .searchUsers(keyword, page):
             [
                 "q": keyword,
-                "per_page": 1000,
+                "per_page": 15,
                 "page": page
             ]
         case let .getRepoList(_, page):
             [
-                "per_page": 10,
+                "per_page": 15,
                 "page": page
             ]
         case .getUserDetails:
             [:]
-
         }
     }
     

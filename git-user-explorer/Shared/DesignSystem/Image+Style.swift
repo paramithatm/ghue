@@ -11,6 +11,6 @@ import SwiftUI
 extension Image {
     func icon(_ scale: Scale) -> some View {
         self.imageScale(scale)
-            .foregroundStyle(Color.paleBlue4)
+            .foregroundStyle(Color.justBlue)
     }
 }
