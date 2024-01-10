@@ -16,7 +16,7 @@ struct SearchUserView: View {
         Group {
             switch viewModel.viewState {
             case .initialState:
-                EmptyView()
+                EmptyView(title: "Who's on GitHub?", subtitle: "Search to find out", imageName: "icon_search")
             case .loading where viewModel.users.isEmpty:
                 ProgressView()
             case .showResult, .loading:
@@ -25,7 +25,7 @@ struct SearchUserView: View {
             case let .error(message):
                 Text(message)
             }
-        }.searchable(text: $viewModel.searchKeyword, prompt: "Search Users")
+        }.searchable(text: $viewModel.searchKeyword, prompt: "Search users")
         
     }
     

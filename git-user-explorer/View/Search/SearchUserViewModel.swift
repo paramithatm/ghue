@@ -80,13 +80,13 @@ class SearchUserViewModel: ObservableObject {
     
     func loadMoreContentIfNeeded(currentItem user: UserBasicModel?) {
         guard let user = user, viewState != .loading else {
-                return
-            }
-            if viewState == .showResult,
-               let lastUser = users.last,
-               lastUser == user {
-                currentPage += 1 // go to next page
-                fetchSearchResult(keyword: searchKeyword)
-            }
+            return
         }
+        if viewState == .showResult,
+           let lastUser = users.last,
+           lastUser == user {
+            currentPage += 1 // go to next page
+            fetchSearchResult(keyword: searchKeyword)
+        }
+    }
 }
