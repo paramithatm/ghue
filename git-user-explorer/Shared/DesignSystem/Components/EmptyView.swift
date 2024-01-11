@@ -10,8 +10,8 @@ import SwiftUI
 
 struct EmptyView: View {
     
-    var title: String = "Oh no!"
-    var subtitle: String = "An error has occured."
+    var title: String = "Go on,"
+    var subtitle: String = "There's nothing here..."
     var imageName: String = "icon_meh"
     
     var body: some View {

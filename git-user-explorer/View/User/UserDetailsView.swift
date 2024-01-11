@@ -22,11 +22,11 @@ struct UserDetailsView: View {
         Group {
             switch viewModel.viewState {
             case .initialState:
-                Text("wkwk")
+                EmptyView()
             case .loading:
                 ProgressView()
-            case .error(let error):
-                Text(error)
+            case let .error(message):
+                EmptyView(title: "Sorry, there's a problem", subtitle: message)
             case let .showResult(user):
                 VStack {
                     UserDetailsCardView(user: user)

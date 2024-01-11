@@ -19,11 +19,12 @@ struct SearchUserView: View {
                 EmptyView(title: "Who's on GitHub?", subtitle: "Search to find out", imageName: "icon_search")
             case .loading where viewModel.users.isEmpty:
                 ProgressView()
-            case .showResult, .loading:
+            case .showResult where viewModel.users.isEmpty:
+                EmptyView(title: "No results found", subtitle: "Try searching with another keyword")
+            case .loading, .showResult:
                 userList
-                
             case let .error(message):
-                Text(message)
+                EmptyView(title: "Sorry, there's a problem", subtitle: message)
             }
         }.searchable(text: $viewModel.searchKeyword, prompt: "Search users")
         

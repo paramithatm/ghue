@@ -27,10 +27,8 @@ class RepositoryListViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
 
     init(id: String,
-         viewState: RepositoryListViewState = .initialState,
          networkProvider: GitNetworkProviderProtocol = GitNetworkProvider()) {
         self.id = id
-        self.viewState = viewState
         self.networkProvider = networkProvider
     }
     

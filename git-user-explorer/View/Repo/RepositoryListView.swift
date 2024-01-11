@@ -20,11 +20,11 @@ struct RepositoryListView: View {
         Group {
             switch viewModel.viewState {
             case .initialState:
-                Text("wkwk")
+                EmptyView()
             case .loading where viewModel.repos.isEmpty:
                 ProgressView()
-            case let .error(error):
-                Text(error)
+            case let .error(message):
+                EmptyView(title: "Sorry, there's a problem", subtitle: message)
             case .showResult, .loading:
                 List(viewModel.repos) { repo in
                     NavigationLink(destination: WebView(urlString: repo.repoUrl)) {
